@@ -16,7 +16,7 @@ def run_command(ffuf_command, uni, notify, base_url):
     if base_url != "":
         ffuf_command = ffuf_command.replace("fuzztarget", base_url)
         output_file = f"{clean(base_url)}.txt"
-        command = f"{ffuf_command} | {uni} | tee {output_file}; echo \"{base_url}\\n$(cat {output_file})\" | {notify}"#; rm {output_file}"
+        command = f"{ffuf_command} | {uni} | tee {output_file}; echo \"{base_url}\\n$(cat {output_file})\" | {notify}; rm {output_file}"
         subprocess.run(command, shell=True, check=True)
         print(command)
 
